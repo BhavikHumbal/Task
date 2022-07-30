@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TaskModelStoreContainer" CdmEntityContainer="TaskEntities">
+    <EntitySetMapping Name="cities">
+      <EntityTypeMapping TypeName="TaskModel.city">
+        <MappingFragment StoreEntitySet="city">
+          <ScalarProperty Name="city_id" ColumnName="city_id" />
+          <ScalarProperty Name="city_name" ColumnName="city_name" />
+          <ScalarProperty Name="state_id" ColumnName="state_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="TaskModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="Employee_id" ColumnName="Employee_id" />
+          <ScalarProperty Name="f_name" ColumnName="f_name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="state_id" ColumnName="state_id" />
+          <ScalarProperty Name="city_id" ColumnName="city_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="states">
+      <EntityTypeMapping TypeName="TaskModel.state">
+        <MappingFragment StoreEntitySet="state">
+          <ScalarProperty Name="state_id" ColumnName="state_id" />
+          <ScalarProperty Name="state_name" ColumnName="state_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

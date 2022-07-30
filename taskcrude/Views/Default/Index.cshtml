@@ -1,0 +1,87 @@
+﻿@model IEnumerable<taskcrude.Models.Employee>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script>
+    function AddEmp() {
+        $.ajax({
+            url: "/Default/Add_Employee",
+            type: "GET",
+            success: function (data) {
+                $("#mybody").html(data);
+                $("#myModal").modal('show');
+            }
+        });
+    }
+
+    function Edit(Employee_id) {
+        $.ajax({
+            url: "/Default/Edit/" + Employee_id,
+            type: "GET",
+            success: function (data) {
+                $("#mybody").html(data);
+                $("#myModal").modal('show');
+            }
+        });
+    }
+
+    function Delete(Employee_id) {
+        if (confirm("are you sure you want to delete this..?")) {
+            $.ajax({
+                url: "/Default/Delete/" + Employee_id,
+                type: "GET",
+                success: function (data) {
+                    alert(data);
+                    window.location.href = "/Default/Index";
+                }
+            });
+        }
+        else {
+            return false;
+        }
+    }
+</script>
+
+
+<h2>Index</h2>
+
+<p>
+    <button type="button" class="btn btn-info btn-lg" onclick="AddEmp()">Add New Employee</button>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.f_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.phone_number)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.f_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.phone_number)
+            </td>
+            <td>
+                <button type="button" class="btn btn-info btn-lg" onclick="Edit(@item.Employee_id)">Edit</button> |
+                <button type="button" class="btn btn-info btn-lg" onclick="Delete(@item.Employee_id)">Delete</button>
+            </td>
+        </tr>
+    }
+
+</table>
